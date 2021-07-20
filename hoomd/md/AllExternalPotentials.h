@@ -8,6 +8,7 @@
 
 #include "AllPairPotentials.h"
 #include "EvaluatorExternalElectricField.h"
+#include "EvaluatorExternalGravitationalField.h"
 #include "EvaluatorExternalPeriodic.h"
 #include "EvaluatorWalls.h"
 #include "PotentialExternal.h"
@@ -29,6 +30,7 @@ typedef PotentialExternal<EvaluatorExternalPeriodic> PotentialExternalPeriodic;
 
 //! Electric field
 typedef PotentialExternal<EvaluatorExternalElectricField> PotentialExternalElectricField;
+typedef PotentialExternal<EvaluatorExternalGravitationalField> PotentialExternalGravitationalField;
 
 typedef PotentialExternal<EvaluatorWalls<EvaluatorPairLJ>> WallsPotentialLJ;
 typedef PotentialExternal<EvaluatorWalls<EvaluatorPairSLJ>> WallsPotentialSLJ;
@@ -41,7 +43,8 @@ typedef PotentialExternal<EvaluatorWalls<EvaluatorPairMorse>> WallsPotentialMors
 #ifdef ENABLE_HIP
 //! External potential to impose periodic structure on the GPU
 typedef PotentialExternalGPU<EvaluatorExternalPeriodic> PotentialExternalPeriodicGPU;
-typedef PotentialExternalGPU<EvaluatorExternalElectricField> PotentialExternalElectricFieldGPU;
+typedef PotentialExternalGPU<EvaluatorExternalElectricField> PotentialExternalElectricFieldGPU;Gravitational
+typedef PotentialExternalGPU<EvaluatorExternalGravitationalField> PotentialExternalGravitationalFieldGPU;
 typedef PotentialExternalGPU<EvaluatorWalls<EvaluatorPairLJ>> WallsPotentialLJGPU;
 typedef PotentialExternalGPU<EvaluatorWalls<EvaluatorPairSLJ>> WallsPotentialSLJGPU;
 typedef PotentialExternalGPU<EvaluatorWalls<EvaluatorPairForceShiftedLJ>>
