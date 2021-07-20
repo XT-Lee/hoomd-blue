@@ -43,7 +43,7 @@ typedef PotentialExternal<EvaluatorWalls<EvaluatorPairMorse>> WallsPotentialMors
 #ifdef ENABLE_HIP
 //! External potential to impose periodic structure on the GPU
 typedef PotentialExternalGPU<EvaluatorExternalPeriodic> PotentialExternalPeriodicGPU;
-typedef PotentialExternalGPU<EvaluatorExternalElectricField> PotentialExternalElectricFieldGPU;Gravitational
+typedef PotentialExternalGPU<EvaluatorExternalElectricField> PotentialExternalElectricFieldGPU;
 typedef PotentialExternalGPU<EvaluatorExternalGravitationalField> PotentialExternalGravitationalFieldGPU;
 typedef PotentialExternalGPU<EvaluatorWalls<EvaluatorPairLJ>> WallsPotentialLJGPU;
 typedef PotentialExternalGPU<EvaluatorWalls<EvaluatorPairSLJ>> WallsPotentialSLJGPU;
