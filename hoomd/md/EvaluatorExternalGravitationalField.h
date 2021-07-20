@@ -68,7 +68,7 @@ class EvaluatorExternalGravitationalField
         //! Accept the optional diameter value
         /*! \param mi Mass of particle i
         */
-        DEVICE void setMass(Scalar qi) { m_mi = mi; }
+        DEVICE void setMass(Scalar mi) { m_mi = mi; }
 
         //! Declares additional virial contributions are needed for the external field
         /*! No contribution
