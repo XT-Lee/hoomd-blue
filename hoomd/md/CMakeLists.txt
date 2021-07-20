@@ -83,6 +83,7 @@ set(_md_headers ActiveForceComputeGPU.h
                 EvaluatorConstraint.h
                 EvaluatorConstraintSphere.h
                 EvaluatorExternalElectricField.h
+		EvaluatorExternalGravitationalField.h
                 EvaluatorExternalPeriodic.h
                 EvaluatorPairBuckingham.h
                 EvaluatorPairDipole.h
