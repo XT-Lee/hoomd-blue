@@ -228,6 +228,22 @@ void export_PotentialExternal<PotentialExternalElectricField>(pybind11::module& 
         .def("setField", &PotentialExternalElectricField::setField);
     }
 
+//! Export setParamsPython and getParams as a different name
+// Gravitational field only has one parameter, so we can get its parameter from
+// python with by a name other than getParams and setParams
+template<>
+void export_PotentialExternal<PotentialExternalGravitationalField>(pybind11::module& m,
+                                                              const std::string& name)
+    {
+    pybind11::class_<PotentialExternalGravitationalField,
+                     ForceCompute,
+                     std::shared_ptr<PotentialExternalGravitationalField>>(m, name.c_str())
+        .def(pybind11::init<std::shared_ptr<SystemDefinition>>())
+        .def("setE", &PotentialExternalGravitationalField::setParamsPython)
+        .def("getE", &PotentialExternalGravitationalField::getParams)
+        .def("setField", &PotentialExternalGravitationalField::setField);
+    }
+
 //! Create the python module
 /*! each class setup their own python exports in a function export_ClassName
     create the hoomd python module and define the exports here.
@@ -295,6 +311,8 @@ PYBIND11_MODULE(_md, m)
     m.def("make_wall_field_params", &make_wall_field_params);
     export_PotentialExternal<PotentialExternalPeriodic>(m, "PotentialExternalPeriodic");
     export_PotentialExternal<PotentialExternalElectricField>(m, "PotentialExternalElectricField");
+    export_PotentialExternal<PotentialExternalGravitationalField>(m, "PotentialExternalGravitationalField");
+    
     // TODO: Port walls to HOOMD v3
     // export_PotentialExternalWall<EvaluatorPairLJ>(m, "WallsPotentialLJ");
     // export_PotentialExternalWall<EvaluatorPairYukawa>(m, "WallsPotentialYukawa");
@@ -396,6 +414,9 @@ PYBIND11_MODULE(_md, m)
     export_PotentialExternalGPU<PotentialExternalElectricFieldGPU, PotentialExternalElectricField>(
         m,
         "PotentialExternalElectricFieldGPU");
+    export_PotentialExternalGPU<PotentialExternalGravitationalFieldGPU, PotentialExternalGravitationalField>(
+        m,
+        "PotentialExternalGravitationalFieldGPU");
     /*
     export_PotentialExternalGPU<WallsPotentialLJGPU, WallsPotentialLJ>(m, "WallsPotentialLJGPU");
     export_PotentialExternalGPU<WallsPotentialYukawaGPU, WallsPotentialYukawa>(
