@@ -128,3 +128,45 @@ class Electric(Field):
             'E', 'particle_types',
             TypeParameterDict((float, float, float), len_keys=1))
         self._add_typeparam(params)
+        
+class Gravitational(Field):
+    """Gravitational field.
+
+    `Gravitational` specifies that an external force should be added to every
+    particle in the simulation that results from an Gravitational field.
+
+    The external potential :math:`V(\\vec{r})` is implemented using the
+    following formula:
+
+    .. math::
+
+       V(\\vec{r}) = - m_i \\vec{g} \\cdot \\vec{r}
+
+
+    where :math:`m_i` is the particle mass and :math:`\\vec{g}` is the field
+    vector. The field vector :math:`\\vec{g}` must be set per unique particle
+    types.
+
+    .. py:attribute:: g
+
+        The electric field vector, :math:`g`, as a tuple (i.e.
+        :math:`(g_x, g_y, g_z)`) \
+        :math:`[\\mathrm{energy} \\cdot \\mathrm{mass}^{-1} \\cdot \
+        \\mathrm{length^{-1}}]`.
+
+        Type: `TypeParameter` [``particle_type``, `tuple` [`float`, `float`,
+        `float`]]
+
+    Example::
+
+        # Apply an gravitational field in the x-direction
+        g_field = external.field.Gravitational()
+        g_field.g['A'] = (1, 0, 0)
+    """
+    _cpp_class_name = "PotentialExternalElectricField"
+
+    def __init__(self):
+        params = TypeParameter(
+            'g', 'particle_types',
+            TypeParameterDict((float, float, float), len_keys=1))
+        self._add_typeparam(params)
