@@ -239,8 +239,8 @@ void export_PotentialExternal<PotentialExternalGravitationalField>(pybind11::mod
                      ForceCompute,
                      std::shared_ptr<PotentialExternalGravitationalField>>(m, name.c_str())
         .def(pybind11::init<std::shared_ptr<SystemDefinition>>())
-        .def("setE", &PotentialExternalGravitationalField::setParamsPython)
-        .def("getE", &PotentialExternalGravitationalField::getParams)
+        .def("setg", &PotentialExternalGravitationalField::setParamsPython)
+        .def("getg", &PotentialExternalGravitationalField::getParams)
         .def("setField", &PotentialExternalGravitationalField::setField);
     }
 
