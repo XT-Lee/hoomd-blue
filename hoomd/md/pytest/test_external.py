@@ -38,6 +38,15 @@ def _evaluate_electric(snapshot, params):
     forces = np.outer(charges, E_field)
     return forces, energies
 
+def _evaluate_gravitational(snapshot, params):
+    """Evaluate force and energy in python for GravitationalField."""
+    positions = snapshot.particles.position
+    masses = snapshot.particles.mass
+    g_field = params
+    energies = -masses * np.dot(positions, g_field)
+    forces = np.outer(masses, g_field)
+    return forces, energies
+
 
 def _external_params():
     """Each is tuple (cls_obj, param attr, lis(param values), eval func)."""
