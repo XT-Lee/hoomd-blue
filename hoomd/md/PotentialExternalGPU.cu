@@ -2,6 +2,7 @@
 // This file is part of the HOOMD-blue project, released under the BSD 3-Clause License.
 
 #include "EvaluatorExternalElectricField.h"
+#include "EvaluatorExternalGravitationalField.h"
 #include "EvaluatorExternalPeriodic.h"
 #include "EvaluatorPairForceShiftedLJ.h"
 #include "EvaluatorPairGauss.h"
@@ -25,6 +26,11 @@ template hipError_t __attribute__((visibility("default"))) gpu_cpef<EvaluatorExt
     const external_potential_args_t& external_potential_args,
     const typename EvaluatorExternalElectricField::param_type* d_params,
     const typename EvaluatorExternalElectricField::field_type* d_field);
+//! Evaluator for Gravitational fields
+template hipError_t __attribute__((visibility("default"))) gpu_cpef<EvaluatorExternalGravitationalField>(
+    const external_potential_args_t& external_potential_args,
+    const typename EvaluatorExternalGravitationalField::param_type* d_params,
+    const typename EvaluatorExternalGravitationalField::field_type* d_field);
 //! Evaluator for Lennard-Jones pair potential.
 template hipError_t __attribute__((visibility("default")))
 gpu_cpef<EvaluatorWalls<EvaluatorPairLJ>>(
